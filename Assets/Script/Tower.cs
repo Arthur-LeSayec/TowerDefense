@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Tower : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class Tower : MonoBehaviour
     private float fireRate { get; set; } = 0.1f;
     private float currentFireRate { get; set; } = 0.0f;
 
+    private List<Enemy> enemies { get; set; } = null;
+
     private void Start()
     {
-        
+        enemies = new List<Enemy>(); 
     }
 
 
@@ -32,7 +35,11 @@ public class Tower : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        other.GetComponent<>
+
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy !=null)
+        {
+            enemies.Remove(enemy);
+        }
     }
 }
