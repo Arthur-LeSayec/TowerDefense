@@ -13,18 +13,16 @@ public class Tower : MonoBehaviour
 
     private void Start()
     {
-        enemies = new List<Enemy>(); 
+        enemies = new List<Enemy>();
     }
-
 
     private void Update()
     {
-        
-    }
 
-    public void Upgrade ()
+    }
+    public void Upgrade()
     {
-        if (upgrade ==null)
+        if (upgrade == null)
         {
             return;
         }
@@ -33,13 +31,14 @@ public class Tower : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void AddEnemy(Enemy enemy)
     {
-
-        Enemy enemy = other.GetComponent<Enemy>();
-        if (enemy !=null)
-        {
-            enemies.Remove(enemy);
-        }
+        enemies.Add(enemy);
     }
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        enemies.Remove(enemy);
+    }
+
 }
